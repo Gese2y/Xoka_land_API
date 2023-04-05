@@ -29,6 +29,7 @@ namespace Application.Job.Commands.procMSEEmployee.procMSEEmployeeUpdate.procMSE
 		public bool Is_Returnee { get; set; }
 		public bool Has_HIV { get; set; }
 		public string Kebele_ID { get; set; }
+		public DateTime TerminatedDate { get; set; }
 	}
 		
 		
