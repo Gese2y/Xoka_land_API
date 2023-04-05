@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>XOKA.Application</RootNamespace>
+    <AssemblyName>XOKA.Application</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Budget\Commands\XXX Create - new new - Copy  finance - Copy %25284%2529 - Copy\**" />
+    <Compile Remove="Categories\**" />
+    <Compile Remove="Customers\**" />
+    <Compile Remove="Employees\**" />
+    <Compile Remove="Job\Commands\command - Copy %25282%2529\**" />
+    <Compile Remove="Products\**" />
+    <Compile Remove="System\Commands\SeedSampleData\**" />
+    <EmbeddedResource Remove="Budget\Commands\XXX Create - new new - Copy  finance - Copy %25284%2529 - Copy\**" />
+    <EmbeddedResource Remove="Categories\**" />
+    <EmbeddedResource Remove="Customers\**" />
+    <EmbeddedResource Remove="Employees\**" />
+    <EmbeddedResource Remove="Job\Commands\command - Copy %25282%2529\**" />
+    <EmbeddedResource Remove="Products\**" />
+    <EmbeddedResource Remove="System\Commands\SeedSampleData\**" />
+    <None Remove="Budget\Commands\XXX Create - new new - Copy  finance - Copy %25284%2529 - Copy\**" />
+    <None Remove="Categories\**" />
+    <None Remove="Customers\**" />
+    <None Remove="Employees\**" />
+    <None Remove="Job\Commands\command - Copy %25282%2529\**" />
+    <None Remove="Products\**" />
+    <None Remove="System\Commands\SeedSampleData\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Common\Interfaces\ICsvFileBuilder.cs" />
+    <Compile Remove="Finance\Commands\ProcVATProdPostingGroup\procVATProdPostingGroupUpdate\procVATProdPostingGroupUpdateHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="FluentValidation" Version="8.5.0-preview5" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0" />
+    <PackageReference Include="System.Spatial" Version="5.8.4" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="System\Commands\" />
+  </ItemGroup>
+
+</Project>
