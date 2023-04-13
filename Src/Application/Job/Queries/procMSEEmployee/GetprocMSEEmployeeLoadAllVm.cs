@@ -24,6 +24,7 @@ namespace Application.Job.Quiries.procMSEEmployee
 		public bool Is_Returnee { get; set; }
 		public bool Has_HIV { get; set; }
 		public string Kebele_ID { get; set; }
+		public DateTime TerminatedDate { get; set; }
 		public void Mapping(Profile profile)
         {
             profile.CreateMap<MSEEmployee, GetprocMSEEmployeeLoadAllVm>();

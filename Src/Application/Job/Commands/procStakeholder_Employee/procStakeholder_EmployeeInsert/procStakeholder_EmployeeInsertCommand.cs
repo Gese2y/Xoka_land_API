@@ -30,6 +30,7 @@ namespace Application.Job.Commands.procStakeholder_Employee.procStakeholder_Empl
         public Nullable<bool> Has_HIV { get; set; }
         public string Employee_Status { get; set; }
         public string Kebele_ID { get; set; }
+        public DateTime TerminatedDate { get; set; }
 
     }
 

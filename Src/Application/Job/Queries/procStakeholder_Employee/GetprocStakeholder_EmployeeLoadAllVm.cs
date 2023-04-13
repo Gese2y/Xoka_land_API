@@ -25,7 +25,7 @@ namespace Application.Job.Quiries.procStakeholder_Employee
         public Nullable<bool> Has_HIV { get; set; }
         public string Employee_Status { get; set; }
         public string Kebele_ID { get; set; }
-
+        public DateTime TerminatedDate { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Stakeholder_Employee, GetprocStakeholder_EmployeeLoadAllVm>();
