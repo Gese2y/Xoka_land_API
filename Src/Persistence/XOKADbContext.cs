@@ -58,8 +58,10 @@ namespace Persistence
         public DbSet<View_Job_Match> View_Job_Match { get; set; }  
         public DbSet<View_Exam_Result_Certificat> View_Exam_Result_Certificat { get; set; } 
         public DbSet<View_woreda_for_SuportingService> View_woreda_for_SuportingService { get; set; } 
-        public DbSet<View_OCAC_Exam_Cad_IDForExam_Result> View_OCAC_Exam_Cad_IDForExam_Result { get; set; }
+        public DbSet<View_OCAC_Exam_Cad_IDForExam_Result> View_OCAC_Exam_Cad_IDForExam_Result { get; set; } 
+        public DbSet<View_BatchwithEnrollment> View_BatchwithEnrollment { get; set; }
         public DbSet<ViewMKTProdIO> ViewMKTProdIO { get; set; }
+        public DbSet<View_Application_Json> View_Application_Json { get; set; }
 
         public DbSet<ViewBatch> Viewbatch { get; set; }
         public DbSet<View_examplan> View_examplan { get; set; } 
@@ -250,6 +252,39 @@ namespace Persistence
            eb.Property(v => v.Woreda).HasColumnName("Woreda");
            eb.Property(v => v.Zone).HasColumnName("Zone");
        });
+            modelBuilder
+      .Entity<View_BatchwithEnrollment>(eb =>
+      {
+          eb.HasNoKey();
+          eb.ToView("View_BatchwithEnrollment");
+          eb.Property(v => v.ProviderCode).HasColumnName("ProviderCode");
+          eb.Property(v => v.Capac).HasColumnName("Capac");
+          eb.Property(v => v.Student_code).HasColumnName("Student_code");
+          eb.Property(v => v.Start_Date).HasColumnName("Start_Date");
+          eb.Property(v => v.Year).HasColumnName("Year");
+          eb.Property(v => v.End_Date).HasColumnName("End_Date");
+          eb.Property(v => v.Code).HasColumnName("Code");
+          eb.Property(v => v.Type).HasColumnName("Type");
+          eb.Property(v => v.Level).HasColumnName("Level");
+          eb.Property(v => v.program_name).HasColumnName("Program_Name");
+          eb.Property(v => v.provider_name).HasColumnName("provider_name");
+          eb.Property(v => v.ID).HasColumnName("ID");
+          eb.Property(v => v.EID).HasColumnName("EID");
+      });
+            modelBuilder
+    .Entity<View_Application_Json>(eb =>
+    {
+        eb.HasNoKey();
+        eb.ToView("View_Application_Json");
+        eb.Property(v => v.application_number).HasColumnName("application_number");
+        eb.Property(v => v.tasks_task_code).HasColumnName("tasks_task_code");
+        eb.Property(v => v.Valuexml).HasColumnName("Valuexml");
+        eb.Property(v => v.description_en).HasColumnName("description_en");
+        eb.Property(v => v.task_type_code).HasColumnName("task_type_code");
+        eb.Property(v => v.application_code).HasColumnName("application_code");
+        eb.Property(v => v.process_detail_code).HasColumnName("process_detail_code");
+        eb.Property(v => v.services_service_code).HasColumnName("services_service_code");
+    });
         }
     }
 }
