@@ -54,7 +54,8 @@ namespace Persistence
         #endregion
 
         // view
-        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; } 
+        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<View_appliction_by_username> View_appliction_by_username { get; set; } 
         public DbSet<View_Job_Match> View_Job_Match { get; set; }  
         public DbSet<View_Exam_Result_Certificat> View_Exam_Result_Certificat { get; set; } 
         public DbSet<View_woreda_for_SuportingService> View_woreda_for_SuportingService { get; set; } 
@@ -284,6 +285,14 @@ namespace Persistence
         eb.Property(v => v.application_code).HasColumnName("application_code");
         eb.Property(v => v.process_detail_code).HasColumnName("process_detail_code");
         eb.Property(v => v.services_service_code).HasColumnName("services_service_code");
+    }); 
+            modelBuilder
+    .Entity<View_appliction_by_username>(eb =>
+    {
+        eb.HasNoKey();
+        eb.ToView("View_appliction_by_username");
+        eb.Property(v => v.application_number).HasColumnName("application_number");
+        eb.Property(v => v.UserName).HasColumnName("UserName");
     });
         }
     }

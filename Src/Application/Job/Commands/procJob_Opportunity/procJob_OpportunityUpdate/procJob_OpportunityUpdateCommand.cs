@@ -32,6 +32,7 @@ namespace Application.Job.Commands.procJob_Opportunity.procJob_OpportunityUpdate
         public string Sector { get; set; }
         public string Sub_Sector { get; set; }
         public string Field_of_Business { get; set; }
+        public Nullable<System.DateTime> Date_of_sending_to_the_employer_office { get; set; }
     }
 		
 		

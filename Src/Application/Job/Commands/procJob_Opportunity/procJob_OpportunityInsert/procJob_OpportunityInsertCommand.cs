@@ -25,13 +25,15 @@ namespace Application.Job.Commands.procJob_Opportunity.procJob_OpportunityInsert
         public string Description { get; set; }
         public string Type_Of_Hire { get; set; }
         public Nullable<System.DateTime> Date_Posted { get; set; }
-        public Nullable<System.DateTime> Date_Expires { get; set; }
+        public Nullable<System.DateTime> Date_Expires { get; set; }  
         public Nullable<bool> Is_Active { get; set; }
         public string Remarks { get; set; }
         public string Education_Type { get; set; }
         public string Sector { get; set; }
         public string Sub_Sector { get; set; }
         public string Field_of_Business { get; set; }
+        public Nullable<System.DateTime> Date_of_sending_to_the_employer_office { get; set; }
+
     }
 		
 		
