@@ -20,6 +20,7 @@ namespace Application.Job.Commands.procProduct.procProductUpdate.procProductUpda
         public string Sub_Sector { get; set; }
         public System.Guid? Parent { get; set; }
         public bool? IS_Active { get; set; }
+        public string Field_of_Business { get; set; }
     }
 		
 		

@@ -19,6 +19,7 @@ namespace Application.Job.Commands.procProduct.procProductInsert.procProductInse
         public string Sub_Sector { get; set; }
         public System.Guid? Parent { get; set; }
         public bool? IS_Active { get; set; }
+        public string Field_of_Business { get; set; }
     }
 		
 		

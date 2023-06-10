@@ -14,6 +14,7 @@ namespace Application.Job.Quiries.procProduct
         public string Name { get; set; }
         public string Sector { get; set; }
         public string Sub_Sector { get; set; }
+        public string Field_of_Business { get; set; }
         public System.Guid? Parent { get; set; }
         public bool? IS_Active { get; set; }
         public void Mapping(Profile profile)

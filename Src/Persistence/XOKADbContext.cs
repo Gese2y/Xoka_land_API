@@ -66,7 +66,7 @@ namespace Persistence
         public DbSet<View_BatchwithEnrollment> View_BatchwithEnrollment { get; set; }
         public DbSet<ViewMKTProdIO> ViewMKTProdIO { get; set; }
         public DbSet<View_Application_Json> View_Application_Json { get; set; }
-
+        public DbSet<View_StackholderswithEnterprise_Registration> View_StackholderswithEnterprise_Registration { get; set; }
         public DbSet<ViewBatch> Viewbatch { get; set; }
         public DbSet<View_examplan> View_examplan { get; set; } 
         public DbSet<View_jobassignment_transaction> View_jobassignment_transaction { get; set; }
@@ -107,6 +107,17 @@ namespace Persistence
                 eb.Property(v => v.name_en).HasColumnName("name_en");
                 eb.Property(v => v.organization_code).HasColumnName("organization_code");
             });
+            modelBuilder
+
+           .Entity<View_StackholderswithEnterprise_Registration>(eb =>
+           {
+               eb.HasNoKey();
+               eb.ToView("View_StackholderswithEnterprise_Registration");
+               eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+               eb.Property(v => v.MSE_Code).HasColumnName("MSE_Code");
+               eb.Property(v => v.Type_Of_Stakeholder).HasColumnName("Type_Of_Stakeholder");
+          
+           });
 
             modelBuilder
             .Entity<ViewBatch>(eb =>
