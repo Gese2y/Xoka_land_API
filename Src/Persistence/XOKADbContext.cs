@@ -54,7 +54,10 @@ namespace Persistence
         #endregion
 
         // view
-        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; } 
+        public DbSet<view__job_positionbyparent> view__job_positionbyparent { get; set; }
+        public DbSet<view_Null_parent_job_position> view_Null_parent_job_position { get; set; }
+        public DbSet<View_Apliction_by_username_and_service> View_Apliction_by_username_and_service { get; set; }
         public DbSet<View_appliction_by_username> View_appliction_by_username { get; set; } 
         public DbSet<View_Job_Match> View_Job_Match { get; set; }  
         public DbSet<View_Exam_Result_Certificat> View_Exam_Result_Certificat { get; set; } 
@@ -293,7 +296,43 @@ namespace Persistence
         eb.ToView("View_appliction_by_username");
         eb.Property(v => v.application_number).HasColumnName("application_number");
         eb.Property(v => v.UserName).HasColumnName("UserName");
+    });   
+            modelBuilder
+    .Entity<View_Apliction_by_username_and_service>(eb =>
+    {
+        eb.HasNoKey();
+        eb.ToView("View_Apliction_by_username_and_service");
+        eb.Property(v => v.application_number).HasColumnName("application_number");
+        eb.Property(v => v.UserName).HasColumnName("UserName");
+        eb.Property(v => v.application_code).HasColumnName("application_code");
+        eb.Property(v => v.UserId).HasColumnName("UserId"); 
+        eb.Property(v => v.services_service_code).HasColumnName("services_service_code");
+        eb.Property(v => v.organization_code).HasColumnName("organization_code");
     });
+            modelBuilder
+   .Entity<view__job_positionbyparent>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("view__job_positionbyparent");
+       eb.Property(v => v.Job_Position_ID).HasColumnName("Job_Position_ID");
+       eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
+       eb.Property(v => v.Parent_ID).HasColumnName("Parent_ID");
+       eb.Property(v => v.Sector).HasColumnName("Sector");
+       eb.Property(v => v.Sub_Sector).HasColumnName("Sub_Sector");
+       eb.Property(v => v.Field_of_Bussines).HasColumnName("Field_of_Bussines");
+   }); 
+            modelBuilder
+   .Entity<view_Null_parent_job_position>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("view_Null_parent_job_position");
+       eb.Property(v => v.Job_Position_ID).HasColumnName("Job_Position_ID");
+       eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
+       eb.Property(v => v.Parent_ID).HasColumnName("Parent_ID");
+       eb.Property(v => v.Sector).HasColumnName("Sector");
+       eb.Property(v => v.Sub_Sector).HasColumnName("Sub_Sector");
+       eb.Property(v => v.Field_of_Bussines).HasColumnName("Field_of_Bussines");
+   });
         }
     }
 }

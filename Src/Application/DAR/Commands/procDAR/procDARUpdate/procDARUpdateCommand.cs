@@ -28,6 +28,7 @@ namespace Application.DAR.Commands.procDAR.procDARUpdate.procDARUpdateCommand
         public string Ownership_Type { get; set; }
         public byte[] Scanned_Document { get; set; }
         public System.Int32? Number_Of_Pages { get; set; }
+        public System.Double? Share_Price { get; set; }
 
     }
 		
