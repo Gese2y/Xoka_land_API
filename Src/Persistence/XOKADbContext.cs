@@ -75,6 +75,7 @@ namespace Persistence
         public DbSet<View_jobassignment_transaction> View_jobassignment_transaction { get; set; }
         public DbSet<View_Unemployment_Education_Experience> View_Unemployment_Education_Experience { get; set; }
         public DbSet<View_Job_Matchdesendingorder> View_Job_Matchdesendingorder { get; set; }
+        public DbSet<View_jobMachingFilterqualifyAllparameter> View_jobMachingFilterqualifyAllparameter { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
@@ -111,6 +112,18 @@ namespace Persistence
                 eb.Property(v => v.name_en).HasColumnName("name_en");
                 eb.Property(v => v.organization_code).HasColumnName("organization_code");
             });
+            modelBuilder
+           .Entity<View_jobMachingFilterqualifyAllparameter>(eb =>
+           {
+               eb.HasNoKey();
+               eb.ToView("View_jobMachingFilterqualifyAllparameterStep7");
+               eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+               eb.Property(v => v.Woreda).HasColumnName("Woreda");
+               eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+               eb.Property(v => v.QualifyBYAllParameter).HasColumnName("QualifyBYAllParameter");
+               eb.Property(v => v.Date_Expires).HasColumnName("Date_Expires");
+          
+           });
             modelBuilder
 
            .Entity<View_StackholderswithEnterprise_Registration>(eb =>
