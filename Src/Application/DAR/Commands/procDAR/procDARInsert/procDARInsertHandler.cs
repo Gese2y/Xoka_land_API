@@ -40,8 +40,8 @@ namespace Application.DAR.Commands.procDAR.procDARInsert.procDARInsertCommand
             string Ownership_Type = request.Ownership_Type;
             byte[] Scanned_Document = request.Scanned_Document;
             System.Int32? Number_Of_Pages = request.Number_Of_Pages;
-
-        IList<DAR_DARNO> result = await _procedureAdabter
+            System.Double? Share_Price = request.Share_Price;
+            IList<DAR_DARNO> result = await _procedureAdabter
                 .Execute<DAR_DARNO>("[DAR].proc_DARInsert",
            (nameof(DAR_NO), DAR_NO), 
            (nameof(Name_EN), Name_EN), 
@@ -56,7 +56,8 @@ namespace Application.DAR.Commands.procDAR.procDARInsert.procDARInsertCommand
            (nameof(Temp_Name_ID), Temp_Name_ID), 
            (nameof(Ownership_Type), Ownership_Type), 
            (nameof(Scanned_Document), Scanned_Document), 
-           (nameof( Number_Of_Pages), Number_Of_Pages)
+           (nameof( Number_Of_Pages), Number_Of_Pages),
+           (nameof(Share_Price), Share_Price)
            );
             return result;
         }

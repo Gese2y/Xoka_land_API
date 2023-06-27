@@ -12,6 +12,7 @@ namespace XOKA.Domain.Entities.Job
         public Nullable<System.DateTime> Date_Proposed { get; set; }
         public Nullable<bool> Is_Approved { get; set; }
         public string Approval_Justification_Doc { get; set; }
+        public string Hired_Justification_Doc { get; set; }
         public Nullable<bool> Is_Hired { get; set; }
         public string Remarks { get; set; }
 

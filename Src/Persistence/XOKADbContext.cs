@@ -54,7 +54,10 @@ namespace Persistence
         #endregion
 
         // view
-        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; } 
+        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<View_vitaleage> View_vitaleage { get; set; }
+        public DbSet<View_shareholderdetailbydar> View_shareholderdetailbydar { get; set; } 
+        public DbSet<View_darforshareprice> View_darforshareprice { get; set; } 
         public DbSet<view__job_positionbyparent> view__job_positionbyparent { get; set; }
         public DbSet<view_Null_parent_job_position> view_Null_parent_job_position { get; set; }
         public DbSet<View_Apliction_by_username_and_service> View_Apliction_by_username_and_service { get; set; }
@@ -71,6 +74,7 @@ namespace Persistence
         public DbSet<View_examplan> View_examplan { get; set; } 
         public DbSet<View_jobassignment_transaction> View_jobassignment_transaction { get; set; }
         public DbSet<View_Unemployment_Education_Experience> View_Unemployment_Education_Experience { get; set; }
+        public DbSet<View_Job_Matchdesendingorder> View_Job_Matchdesendingorder { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
@@ -156,25 +160,52 @@ namespace Persistence
           {
               eb.HasNoKey();
               eb.ToView("View_Unemployment_Education_Experience");
-              eb.Property(v => v.Vital_ID).HasColumnName("Vital_ID");
-              eb.Property(v => v.TIN).HasColumnName("TIN");
+              eb.Property(v => v.ID).HasColumnName("ID");
               eb.Property(v => v.Full_Name).HasColumnName("Full_Name");
-              eb.Property(v => v.Status).HasColumnName("Status");
-              eb.Property(v => v.Unemployment_Number).HasColumnName("Unemployment_Number");
-              eb.Property(v => v.Physical_Condition).HasColumnName("Physical_Condition");
-              eb.Property(v => v.Refugee_Status).HasColumnName("Refugee_Status");
-              eb.Property(v => v.HIV_Status).HasColumnName("HIV_Status");
-              eb.Property(v => v.Returnee_Status).HasColumnName("Returnee_Status");
               eb.Property(v => v.Gender).HasColumnName("Gender");
-              eb.Property(v => v.Level).HasColumnName("Level");
+              eb.Property(v => v.Sex).HasColumnName("Sex");
+              eb.Property(v => v.Age).HasColumnName("Age");
+              eb.Property(v => v.Status).HasColumnName("Status");
+              eb.Property(v => v.Education_Level).HasColumnName("Education_Level");
+              eb.Property(v => v.Education_Level_Name).HasColumnName("Education_Level_Name");
               eb.Property(v => v.Eduction_Types).HasColumnName("Eduction_Types");
-              eb.Property(v => v.Job_Position_ID).HasColumnName("Job_Position_ID");
-              eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
-              eb.Property(v => v.Start_Date).HasColumnName("Start_Date");
-              eb.Property(v => v.End_Date).HasColumnName("End_Date");
-              eb.Property(v => v.basic_Salary).HasColumnName("basic_Salary");
-              eb.Property(v => v.Num_Years).HasColumnName("Num_Years");
+              eb.Property(v => v.english_description).HasColumnName("english_description");
+              eb.Property(v => v.Short_Term_Training).HasColumnName("Short_Term_Training");
+              eb.Property(v => v.Eduction_Types).HasColumnName("Eduction_Types");
+              eb.Property(v => v.Num_Work_Exp).HasColumnName("Num_Work_Exp");
+              eb.Property(v => v.Physical_Condition).HasColumnName("Physical_Condition");
+              eb.Property(v => v.Zone_SubCity).HasColumnName("Zone_SubCity");
+              eb.Property(v => v.Woreda_Kebele).HasColumnName("Woreda_Kebele");
+              eb.Property(v => v.Parent).HasColumnName("Parent");
           });
+            modelBuilder
+         .Entity<View_Job_Matchdesendingorder>(eb =>
+         {
+             eb.HasNoKey();
+             eb.ToView("View_Job_Matchdesendingorder");
+             eb.Property(v => v.Job_Match_ID).HasColumnName("Job_Match_ID");
+             eb.Property(v => v.Transaction_ID).HasColumnName("Transaction_ID");
+             eb.Property(v => v.Kebele_ID).HasColumnName("Kebele_ID");
+             eb.Property(v => v.Officer_Proposed_Kebele_ID).HasColumnName("Officer_Proposed_Kebele_ID");
+             eb.Property(v => v.Officer_Justification).HasColumnName("Officer_Justification");
+             eb.Property(v => v.Date_Proposed).HasColumnName("Date_Proposed");
+             eb.Property(v => v.Is_Approved).HasColumnName("Is_Approved");
+             eb.Property(v => v.Approval_Justification_Doc).HasColumnName("Approval_Justification_Doc");
+             eb.Property(v => v.Is_Hired).HasColumnName("Is_Hired");
+             eb.Property(v => v.Remarks).HasColumnName("Remarks");
+             eb.Property(v => v.Full_Name).HasColumnName("Full_Name");
+             eb.Property(v => v.Gender).HasColumnName("Gender");
+             eb.Property(v => v.Sex).HasColumnName("Sex");
+             eb.Property(v => v.Age).HasColumnName("Age");
+             eb.Property(v => v.Education_Level).HasColumnName("Education_Level");
+             eb.Property(v => v.Education_Level_Name).HasColumnName("Education_Level_Name");
+             eb.Property(v => v.Eduction_Types).HasColumnName("Eduction_Types");
+             eb.Property(v => v.english_description).HasColumnName("english_description");
+             eb.Property(v => v.Eduction_Types).HasColumnName("Eduction_Types");
+             eb.Property(v => v.Zone_SubCity).HasColumnName("Zone_SubCity");
+             eb.Property(v => v.Woreda_Kebele).HasColumnName("Woreda_Kebele");
+             eb.Property(v => v.Parent).HasColumnName("Parent");
+         });
             modelBuilder
          .Entity<View_jobassignment_transaction>(eb =>
          {
@@ -343,6 +374,43 @@ namespace Persistence
        eb.Property(v => v.Sector).HasColumnName("Sector");
        eb.Property(v => v.Sub_Sector).HasColumnName("Sub_Sector");
        eb.Property(v => v.Field_of_Bussines).HasColumnName("Field_of_Bussines");
+   });   
+            modelBuilder
+   .Entity<View_darforshareprice>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_darforshareprice");
+       eb.Property(v => v.DAR_NO).HasColumnName("DAR_NO ");
+       eb.Property(v => v.Share_Price).HasColumnName("Share_Price ");
+   });  
+            modelBuilder
+   .Entity<View_vitaleage>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_vitaleage");
+       eb.Property(v => v.Age).HasColumnName("Age");
+       eb.Property(v => v.ID).HasColumnName("ID");
+   }); 
+            modelBuilder
+   .Entity<View_shareholderdetailbydar>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_shareholderdetailbydar");
+       eb.Property(v => v.ID).HasColumnName("ID");
+       eb.Property(v => v.TIN).HasColumnName("TIN");
+       eb.Property(v => v.Shere_Type).HasColumnName("Shere_Type");
+       eb.Property(v => v.Transfer_Date).HasColumnName("Transfer_Date");
+       eb.Property(v => v.DAR_NO).HasColumnName("DAR_NO ");
+       eb.Property(v => v.No_Share).HasColumnName("No_Share");
+       eb.Property(v => v.Share_Price).HasColumnName("Share_Price");
+       eb.Property(v => v.Total_Share).HasColumnName("Total_Share");
+       eb.Property(v => v.Doc_ID).HasColumnName("Doc_ID");
+       eb.Property(v => v.Full_Name).HasColumnName("Full_Name");
+       eb.Property(v => v.YEAR).HasColumnName("YEAR");
+       eb.Property(v => v.Parent).HasColumnName("Parent");
+       eb.Property(v => v.IS_Current).HasColumnName("IS_Current");
+       eb.Property(v => v.Kebele_ID).HasColumnName("Kebele_ID");
+       eb.Property(v => v.Is_Manager).HasColumnName("Is_Manager");
    });
         }
     }

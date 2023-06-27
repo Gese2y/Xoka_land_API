@@ -22,7 +22,8 @@ namespace Application.Job.Commands.procJob_Match.procJob_MatchInsert.procJob_Mat
         public Nullable<System.DateTime> Date_Proposed { get; set; }
         public Nullable<bool> Is_Approved { get; set; }
         public string Approval_Justification_Doc { get; set; }
-        public Nullable<bool> Is_Hired { get; set; }
+        public string Hired_Justification_Doc { get; set; }
+    public Nullable<bool> Is_Hired { get; set; }
         public string Remarks { get; set; }
     }
 		

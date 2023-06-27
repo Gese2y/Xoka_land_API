@@ -1,19 +1,10 @@
-﻿using AutoMapper;
-using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XOKA.Domain.Entities.Job;
-using XOKA.Domain.Interfaces;
 
-namespace Application.Job.Commands.procJob_Match.procJob_MatchUpdate.procJob_MatchUpdateCommand
+namespace XOKA.Domain.Entities.view
 {
 
-	/// @author  Shimels Alem  proc_MSE_EmployeeUpdate stored procedure.
-
-	public class procJob_MatchUpdateCommand : IRequest<IList<Job_Match_Id>>
-   {
+    public partial class View_Job_Matchdesendingorder
+    {
         public System.Guid Job_Match_ID { get; set; }
         public Nullable<System.Guid> Transaction_ID { get; set; }
         public string Kebele_ID { get; set; }
@@ -25,9 +16,16 @@ namespace Application.Job.Commands.procJob_Match.procJob_MatchUpdate.procJob_Mat
         public string Hired_Justification_Doc { get; set; }
         public Nullable<bool> Is_Hired { get; set; }
         public string Remarks { get; set; }
+        public string Full_Name { get; set; }
+        public string? Gender { get; set; }
+        public string? Sex { get; set; }
+        public int? Age { get; set; }
+        public string? Education_Level { get; set; }
+        public string? Education_Level_Name { get; set; }
+        public string? Eduction_Types { get; set; }
+        public string? english_description { get; set; }
+        public string? Zone_SubCity { get; set; }
+        public string? Woreda_Kebele { get; set; }
+        public string? Parent { get; set; }
     }
-		
-		
-		 
 }
-

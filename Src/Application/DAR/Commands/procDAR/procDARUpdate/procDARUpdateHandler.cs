@@ -41,6 +41,7 @@ namespace Application.DAR.Commands.procDAR.procDARUpdate.procDARUpdateCommand
             string Ownership_Type = request.Ownership_Type;
             byte[] Scanned_Document = request.Scanned_Document;
             System.Int32? Number_Of_Pages = request.Number_Of_Pages;
+            System.Double? Share_Price = request.Share_Price;
             IList<DAR_DARNO> result = await _procedureAdabter
                 .Execute<DAR_DARNO>("[DAR].proc_DARUpdate", 
                 (nameof(DAR_NO), DAR_NO),
@@ -56,7 +57,8 @@ namespace Application.DAR.Commands.procDAR.procDARUpdate.procDARUpdateCommand
                (nameof(Temp_Name_ID), Temp_Name_ID),
                (nameof(Ownership_Type), Ownership_Type),
                (nameof(Scanned_Document), Scanned_Document),
-               (nameof(Number_Of_Pages), Number_Of_Pages)
+               (nameof(Number_Of_Pages), Number_Of_Pages),
+               (nameof(Share_Price), Share_Price)
            );
             return result;
         }
