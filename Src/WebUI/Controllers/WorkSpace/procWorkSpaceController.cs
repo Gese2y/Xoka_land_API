@@ -11,6 +11,7 @@ using Application.WorkSpace.Commands.procWorkSpace.procWorkSpaceInsert.procWorkS
 using Application.WorkSpace.Commands.procWorkSpace.procWorkSpaceUpdate.procWorkSpaceUpdateCommand;
 using Application.WorkSpace.Quiries.procWorkSpace;
 using Application.WorkSpace.Quiries.procWorkSpace.GetprocWorkSpaceByPrimaryKey;
+using Application.WorkSpace.Quiries.procWorkSpace.GetprocWorkSpaceByparentKey;
 using Application.WorkSpace.Quiries.procWorkSpace.GetprocWorkSpaceLoadAll;
 using Microsoft.Extensions.Logging;
 
@@ -40,6 +41,16 @@ namespace XOKA.WebUI.Controllers
         public async Task<ActionResult<GetprocWorkSpaceLoadAllVm>> Get(Guid Work_Space_ID)
         {
             var vm = await Mediator.Send(new GetprocWorkSpaceByPrimaryKey { Work_Space_ID = Work_Space_ID });
+
+            return Ok(vm);
+        }
+
+        [HttpGet("parent/{Work_Space_ID}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<GetprocWorkSpaceLoadAllVm>> Getparent(Guid Work_Space_ID)
+        {
+            var vm = await Mediator.Send(new GetprocWorkSpaceByParentKey { Work_Space_ID = Work_Space_ID });
 
             return Ok(vm);
         }

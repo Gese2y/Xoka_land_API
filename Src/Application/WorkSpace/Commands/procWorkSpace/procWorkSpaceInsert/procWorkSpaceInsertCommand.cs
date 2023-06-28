@@ -35,6 +35,7 @@ namespace Application.WorkSpace.Commands.procWorkSpace.procWorkSpaceInsert.procW
 
 		public bool? Is_Built_By_Government { get; set; }
 		public bool? Is_Built_By_NGO { get; set; }
+		public System.Guid? Parent { get; set; }
 	}
 		
 		

@@ -31,6 +31,7 @@ namespace Application.WorkSpace.Quiries.procWorkSpace
 
 		public bool? Is_Built_By_Government { get; set; }
 		public bool? Is_Built_By_NGO { get; set; }
+		public Guid? Parent { get; set; }
 		public void Mapping(Profile profile)
         {
             profile.CreateMap<_WorkSpace, GetprocWorkSpaceLoadAllVm>();
