@@ -10,6 +10,6 @@ namespace Application.WorkSpace.Quiries.procWorkSpace.GetprocWorkSpaceByparentKe
 
     public class GetprocWorkSpaceByParentKey : IRequest<GetprocWorkSpaceLoadAllListVm>
     {
-        public System.Guid Work_Space_ID { get; set; }
+        public string Code { get; set; }
     }
 }

@@ -29,6 +29,9 @@ namespace Application.WorkSpace.Commands.procWorkSpace.procWorkSpaceInsert.procW
 		public System.Double? Size_M2 { get; set; }
 		public string Grade { get; set; }
 		public string Remark { get; set; }
+		public string Block_No { get; set; }
+		public string Room_No { get; set; }
+		public int Floor_No { get; set; }
 		public string Location_x { get; set; }
 		public string Location_y { get; set; }
 		public bool? Is_Built_By_Private { get; set; }

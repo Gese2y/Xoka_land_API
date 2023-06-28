@@ -45,12 +45,12 @@ namespace XOKA.WebUI.Controllers
             return Ok(vm);
         }
 
-        [HttpGet("parent/{Work_Space_ID}")]
+        [HttpGet("parent/{code}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<GetprocWorkSpaceLoadAllVm>> Getparent(Guid Work_Space_ID)
+        public async Task<ActionResult<GetprocWorkSpaceLoadAllVm>> Getparent(string code)
         {
-            var vm = await Mediator.Send(new GetprocWorkSpaceByParentKey { Work_Space_ID = Work_Space_ID });
+            var vm = await Mediator.Send(new GetprocWorkSpaceByParentKey { Code = code });
 
             return Ok(vm);
         }
