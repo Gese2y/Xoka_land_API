@@ -55,6 +55,8 @@ namespace Persistence
 
         // view
         public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<View_Sub_city_Job_Assignment_Transactionwithorgandopp> View_Sub_city_Job_Assignment_Transactionwithorgandopp { get; set; }
+        public DbSet<View_Job_Assignment_transactionwithorg> View_Job_Assignment_transactionwithorg { get; set; }
         public DbSet<View_vitaleage> View_vitaleage { get; set; }
         public DbSet<View_shareholderdetailbydar> View_shareholderdetailbydar { get; set; } 
         public DbSet<View_darforshareprice> View_darforshareprice { get; set; } 
@@ -71,10 +73,12 @@ namespace Persistence
         public DbSet<View_Application_Json> View_Application_Json { get; set; }
         public DbSet<View_StackholderswithEnterprise_Registration> View_StackholderswithEnterprise_Registration { get; set; }
         public DbSet<ViewBatch> Viewbatch { get; set; }
-        public DbSet<View_examplan> View_examplan { get; set; } 
+        public DbSet<View_examplan> View_examplan { get; set; }   
+        public DbSet<View_Job_Assignment_transaction> View_Job_Assignment_transaction { get; set; } 
         public DbSet<View_jobassignment_transaction> View_jobassignment_transaction { get; set; }
         public DbSet<View_Unemployment_Education_Experience> View_Unemployment_Education_Experience { get; set; }
-        public DbSet<View_Job_Matchdesendingorder> View_Job_Matchdesendingorder { get; set; }
+        public DbSet<View_Job_Matchdesendingorder> View_Job_Matchdesendingorder { get; set; }  
+        public DbSet<View_Sub_city_Job_Assignment_Transaction> View_Sub_city_Job_Assignment_Transaction { get; set; }
         public DbSet<View_jobMachingFilterqualifyAllparameter> View_jobMachingFilterqualifyAllparameter { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -424,6 +428,56 @@ namespace Persistence
        eb.Property(v => v.IS_Current).HasColumnName("IS_Current");
        eb.Property(v => v.Kebele_ID).HasColumnName("Kebele_ID");
        eb.Property(v => v.Is_Manager).HasColumnName("Is_Manager");
+   }); 
+            modelBuilder
+   .Entity<View_Job_Assignment_transaction>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_Job_Assignment_transaction");
+       eb.Property(v => v.Transaction_ID).HasColumnName("Transaction_ID");
+       eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+       eb.Property(v => v.Woreda).HasColumnName("Woreda");
+       eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
+   });
+            modelBuilder
+   .Entity<View_Sub_city_Job_Assignment_Transaction>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_Sub_city_Job_Assignment_Transaction");
+       eb.Property(v => v.Transaction_ID).HasColumnName("Transaction_ID");
+       eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+       eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+       eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
+       eb.Property(v => v.Created_By).HasColumnName("Created_By");
+   });
+        modelBuilder
+   .Entity<View_Job_Assignment_transactionwithorg>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_Job_Assignment_transactionwithorg");
+       eb.Property(v => v.Transaction_ID).HasColumnName("Transaction_ID");
+       eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+       eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+       eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
+        eb.Property(v => v.subcityname).HasColumnName("subcityname");
+       eb.Property(v => v.woredaname).HasColumnName("woredaname");
+        eb.Property(v => v.Approval_Justification_Doc).HasColumnName("Approval_Justification_Doc");
+       eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
+       eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+   });modelBuilder
+   .Entity<View_Sub_city_Job_Assignment_Transactionwithorgandopp>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_Sub_city_Job_Assignment_Transactionwithorgandopp");
+       eb.Property(v => v.Transaction_ID).HasColumnName("Transaction_ID");
+       eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+       eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+       eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
+        eb.Property(v => v.name_am).HasColumnName("name_am");
+       eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+        eb.Property(v => v.Approval_Justification_Doc).HasColumnName("Approval_Justification_Doc");
+       eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
+       eb.Property(v => v.Created_By).HasColumnName("Created_By");
    });
         }
     }
