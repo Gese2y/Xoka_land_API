@@ -58,13 +58,15 @@ namespace Persistence
         public DbSet<View_Sub_city_Job_Assignment_Transactionwithorgandopp> View_Sub_city_Job_Assignment_Transactionwithorgandopp { get; set; }
         public DbSet<View_Job_Assignment_transactionwithorg> View_Job_Assignment_transactionwithorg { get; set; }
         public DbSet<View_vitaleage> View_vitaleage { get; set; }
+        public DbSet<View_DARBYTIN> View_DARBYTIN { get; set; }
         public DbSet<View_shareholderdetailbydar> View_shareholderdetailbydar { get; set; } 
         public DbSet<View_darforshareprice> View_darforshareprice { get; set; } 
         public DbSet<view__job_positionbyparent> view__job_positionbyparent { get; set; }
         public DbSet<view_Null_parent_job_position> view_Null_parent_job_position { get; set; }
         public DbSet<View_Apliction_by_username_and_service> View_Apliction_by_username_and_service { get; set; }
         public DbSet<View_appliction_by_username> View_appliction_by_username { get; set; } 
-        public DbSet<View_Job_Match> View_Job_Match { get; set; }  
+        public DbSet<View_Job_Match> View_Job_Match { get; set; }
+        public DbSet<View_jobOpprtunityfilterbycity> View_jobOpprtunityfilterbycity { get; set; }
         public DbSet<View_Exam_Result_Certificat> View_Exam_Result_Certificat { get; set; } 
         public DbSet<View_woreda_for_SuportingService> View_woreda_for_SuportingService { get; set; } 
         public DbSet<View_OCAC_Exam_Cad_IDForExam_Result> View_OCAC_Exam_Cad_IDForExam_Result { get; set; } 
@@ -479,6 +481,47 @@ namespace Persistence
        eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
        eb.Property(v => v.Created_By).HasColumnName("Created_By");
    });
+
+            modelBuilder
+   .Entity<View_DARBYTIN>(eb =>
+   {
+       eb.HasNoKey();
+       eb.ToView("View_DARBYTIN");
+       eb.Property(v => v.DAR_NO).HasColumnName("DAR_NO");
+       eb.Property(v => v.Name_EN).HasColumnName("Name_EN");
+       eb.Property(v => v.Name_AM).HasColumnName("Name_AM");
+       eb.Property(v => v.DAR_Type).HasColumnName("DAR_Type");
+       eb.Property(v => v.Doc_ID).HasColumnName("Doc_ID");
+       eb.Property(v => v.IS_Signed).HasColumnName("IS_Signed");
+       eb.Property(v => v.No_of_Copy).HasColumnName("No_of_Copy");
+       eb.Property(v => v.Parent).HasColumnName("Parent");
+       eb.Property(v => v.Licence_Id).HasColumnName("Licence_Id");
+       eb.Property(v => v.Remark).HasColumnName("Remark");
+       eb.Property(v => v.Temp_Name_ID).HasColumnName("Temp_Name_ID");
+       eb.Property(v => v.Ownership_Type).HasColumnName("Ownership_Type");
+       eb.Property(v => v.Scanned_Document).HasColumnName("Scanned_Document");
+       eb.Property(v => v.Number_Of_Pages).HasColumnName("Number_Of_Pages");
+       eb.Property(v => v.Share_Price).HasColumnName("Share_Price");
+       eb.Property(v => v.TIN).HasColumnName("TIN");
+   });
+            modelBuilder
+.Entity<View_jobOpprtunityfilterbycity>(eb =>
+{
+    eb.HasNoKey();
+    eb.ToView("View_jobOpprtunityfilterbycity");
+    eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+    eb.Property(v => v.Name).HasColumnName("Name");
+    eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
+    eb.Property(v => v.Job_Position).HasColumnName("Job_Position");
+    eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+    eb.Property(v => v.name_en).HasColumnName("name_en");
+    eb.Property(v => v.name_am).HasColumnName("name_am");
+    eb.Property(v => v.total_number_of_person).HasColumnName("total_number_of_person");
+    eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+    eb.Property(v => v.Result).HasColumnName("Result");
+    eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
+    eb.Property(v => v.Subtraction_Result).HasColumnName("Subtraction_Result");
+});
         }
     }
 }
