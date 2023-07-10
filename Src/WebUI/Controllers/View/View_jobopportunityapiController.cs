@@ -9,21 +9,21 @@ namespace XOKA.WebUI.Controllers
 {
     [Route("api/view/[controller]")]
     [ApiController]
-    public class View_jobOpprtunityfilterbycityController : BaseController
+    public class View_jobopportunityapiController : BaseController
     {
 
         private readonly XOKADbContext _context;
-        public View_jobOpprtunityfilterbycityController(XOKADbContext context)
+        public View_jobopportunityapiController(XOKADbContext context)
         {
             this._context = context;
         }
 
 
-        [HttpGet("{Sub_City}/{Job_Opportunity_ID}")]
+        [HttpGet("{Stakeholder_TIN}")]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get(Guid Sub_City, Guid Job_Opportunity_ID)
+        public async Task<IActionResult> Get(string Stakeholder_TIN)
         {
-            var vm = _context.View_jobOpprtunityfilterbycity.Where(x => x.Sub_City == Sub_City && x.Job_Opportunity_ID == Job_Opportunity_ID).ToList();
+            var vm = _context.View_jobopportunityapi.Where(x => x.Stakeholder_TIN == Stakeholder_TIN).ToList();
             return Ok(vm);
         }
 

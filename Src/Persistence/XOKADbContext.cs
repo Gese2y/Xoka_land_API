@@ -55,6 +55,7 @@ namespace Persistence
 
         // view
         public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<View_jobopportunityapi> View_jobopportunityapi { get; set; }
         public DbSet<View_Sub_city_Job_Assignment_Transactionwithorgandopp> View_Sub_city_Job_Assignment_Transactionwithorgandopp { get; set; }
         public DbSet<View_Job_Assignment_transactionwithorg> View_Job_Assignment_transactionwithorg { get; set; }
         public DbSet<View_vitaleage> View_vitaleage { get; set; }
@@ -521,6 +522,36 @@ namespace Persistence
     eb.Property(v => v.Result).HasColumnName("Result");
     eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
     eb.Property(v => v.Subtraction_Result).HasColumnName("Subtraction_Result");
+});  
+            modelBuilder
+.Entity<View_jobopportunityapi>(eb =>
+{
+    eb.HasNoKey();
+        eb.ToView("View_jobopportunityapi");
+      eb.Property(v => v.Position_Name).HasColumnName("Position_Name");
+         eb.Property(v => v.Name).HasColumnName("Name");
+         eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+         eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+         eb.Property(v => v.Job_Position).HasColumnName("Job_Position");
+         eb.Property(v => v.Educ_Operand).HasColumnName("Educ_Operand");
+         eb.Property(v => v.Educational_Level_ID).HasColumnName("Educational_Level_ID");
+         eb.Property(v => v.Education_Type).HasColumnName("Education_Type");
+         eb.Property(v => v.Work_Exp_Operand).HasColumnName("Work_Exp_Operand");
+         eb.Property(v => v.Work_Experience_In_Years).HasColumnName("Work_Experience_In_Years");
+         eb.Property(v => v.Gender_Criteria).HasColumnName("Gender_Criteria");
+         eb.Property(v => v.Description).HasColumnName("Description");
+         eb.Property(v => v.Type_Of_Hire).HasColumnName("Type_Of_Hire");
+        eb.Property(v => v.Date_Posted).HasColumnName("Date_Posted");
+        eb.Property(v => v.Date_Expires).HasColumnName("Date_Expires");
+        eb.Property(v => v.Is_Active).HasColumnName("Is_Active");
+         eb.Property(v => v.Remarks).HasColumnName("Remarks");
+         eb.Property(v => v.Sector).HasColumnName("Sector");
+         eb.Property(v => v.Sub_Sector).HasColumnName("Sub_Sector");
+         eb.Property(v => v.Field_of_Business).HasColumnName("Field_of_Business");
+        eb.Property(v => v.Date_of_sending_to_the_employer_office).HasColumnName("Date_of_sending_to_the_employer_office");
+         eb.Property(v => v.gendername).HasColumnName("gendername");
+         eb.Property(v => v.hiretypename).HasColumnName("hiretypename");
+         eb.Property(v => v.educationidname).HasColumnName("educationidname");
 });
         }
     }
