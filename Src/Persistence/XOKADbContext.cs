@@ -552,6 +552,9 @@ namespace Persistence
          eb.Property(v => v.gendername).HasColumnName("gendername");
          eb.Property(v => v.hiretypename).HasColumnName("hiretypename");
          eb.Property(v => v.educationidname).HasColumnName("educationidname");
+    eb.Property(v => v.number_of_person_requird).HasColumnName("number_of_person_requird");
+    eb.Property(v => v.WorkExpOperand).HasColumnName("WorkExpOperand");
+    eb.Property(v => v.EducOperand).HasColumnName("EducOperand");
 });
         }
     }

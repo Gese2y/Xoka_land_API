@@ -25,6 +25,7 @@ namespace Application.Job.Commands.procJob_Match.procJob_MatchUpdate.procJob_Mat
         public string Hired_Justification_Doc { get; set; }
         public Nullable<bool> Is_Hired { get; set; }
         public string Remarks { get; set; }
+        public Nullable<bool> approved_by_sub_city { get; set; }
     }
 		
 		

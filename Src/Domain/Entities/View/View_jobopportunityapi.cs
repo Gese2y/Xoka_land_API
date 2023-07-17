@@ -28,5 +28,8 @@ namespace XOKA.Domain.Entities.view
         public string? gendername { get; set; }
         public string? hiretypename { get; set; }
         public string? educationidname { get; set; }
+        public int number_of_person_requird { get; set; }
+        public string? WorkExpOperand { get; set; }
+        public string? EducOperand { get; set; }
     }
 }
