@@ -557,6 +557,33 @@ namespace Persistence
     eb.Property(v => v.WorkExpOperand).HasColumnName("WorkExpOperand");
     eb.Property(v => v.EducOperand).HasColumnName("EducOperand");
 });
+            modelBuilder
+.Entity<View_stakholderempforapi>(eb =>
+{
+   eb.HasNoKey();
+   eb.ToView("View_stakholderempforapi");
+        eb.Property(v => v.Stakeholder_Employee_ID).HasColumnName("Stakeholder_Employee_ID");
+   eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+   eb.Property(v => v.Employee_TIN).HasColumnName("Employee_TIN");
+   eb.Property(v => v.Full_Name).HasColumnName("Full_Name");
+   eb.Property(v => v.Gender).HasColumnName("Gender");
+   eb.Property(v => v.Date_of_Birth).HasColumnName("Date_of_Birth");
+   eb.Property(v => v.Education_Level).HasColumnName("Education_Level");
+   eb.Property(v => v.Basic_Salary).HasColumnName("Basic_Salary");
+   eb.Property(v => v.Date_Hired).HasColumnName("Date_Hired");
+   eb.Property(v => v.Hire_Type).HasColumnName("Hire_Type");
+   eb.Property(v => v.Is_Disabled).HasColumnName("Is_Disabled");
+   eb.Property(v => v.Is_Refugee).HasColumnName("Is_Refugee");
+   eb.Property(v => v.Is_Returnee).HasColumnName("Is_Returnee");
+   eb.Property(v => v.Has_HIV).HasColumnName("Has_HIV");
+   eb.Property(v => v.Employee_Status).HasColumnName("Employee_Status");
+   eb.Property(v => v.Kebele_ID).HasColumnName("Kebele_ID");
+   eb.Property(v => v.TerminatedDate).HasColumnName("TerminatedDate");
+   eb.Property(v => v.amharic_description).HasColumnName("amharic_description");
+   eb.Property(v => v.Age).HasColumnName("Age");
+   eb.Property(v => v.Education_Level_Name).HasColumnName("Education_Level_Name");
+   eb.Property(v => v.Sex).HasColumnName("Sex");
+});
         }
     }
 }

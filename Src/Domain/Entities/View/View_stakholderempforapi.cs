@@ -18,14 +18,14 @@ namespace XOKA.Domain.Entities.view
         public Nullable<bool> Is_Refugee { get; set; }
         public Nullable<bool> Is_Returnee { get; set; }
         public Nullable<bool> Has_HIV { get; set; }
-        public string Employee_Status { get; set; }
-        public string Kebele_ID { get; set; }
+        public string? Employee_Status { get; set; }
+        public string? Kebele_ID { get; set; }
 
         public Nullable<System.DateTime> TerminatedDate { get; set; }
-        public string amharic_description { get; set; }
-        public string Age { get; set; }
-        public string Education_Level_Name { get; set; }
-        public string Sex { get; set; }
+        public string? amharic_description { get; set; }
+        public int? Age { get; set; }
+        public string? Education_Level_Name { get; set; }
+        public string? Sex { get; set; }
 
     }
 }
