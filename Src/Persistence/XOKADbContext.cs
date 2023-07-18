@@ -54,7 +54,8 @@ namespace Persistence
         #endregion
 
         // view
-        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; } 
+        public DbSet<View_stakholderempforapi> View_stakholderempforapi { get; set; }
         public DbSet<View_jobopportunityapi> View_jobopportunityapi { get; set; }
         public DbSet<View_Sub_city_Job_Assignment_Transactionwithorgandopp> View_Sub_city_Job_Assignment_Transactionwithorgandopp { get; set; }
         public DbSet<View_Job_Assignment_transactionwithorg> View_Job_Assignment_transactionwithorg { get; set; }

@@ -1,19 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XOKA.Domain.Entities.Job;
-using XOKA.Domain.Interfaces;
 
-namespace Application.Job.Commands.procStakeholder_Employee.procStakeholder_EmployeeUpdate.procStakeholder_EmployeeUpdateCommand
+namespace XOKA.Domain.Entities.view
 {
-
-	/// @author  Shimels Alem  proc_MSE_EmployeeUpdate stored procedure.
-
-	public class procStakeholder_EmployeeUpdateCommand : IRequest<IList<Stakeholder_Employee_Id>>
-   {
+    public class View_stakholderempforapi
+    {
         public System.Guid Stakeholder_Employee_ID { get; set; }
         public string Stakeholder_TIN { get; set; }
         public string Employee_TIN { get; set; }
@@ -32,10 +22,10 @@ namespace Application.Job.Commands.procStakeholder_Employee.procStakeholder_Empl
         public string Kebele_ID { get; set; }
 
         public Nullable<System.DateTime> TerminatedDate { get; set; }
+        public string amharic_description { get; set; }
+        public string Age { get; set; }
+        public string Education_Level_Name { get; set; }
+        public string Sex { get; set; }
 
     }
-
-
-
 }
-

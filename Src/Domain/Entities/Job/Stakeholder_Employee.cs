@@ -21,6 +21,6 @@ namespace XOKA.Domain.Entities.Job
         public string Employee_Status { get; set; }
         public string Kebele_ID { get; set; }
 
-        public DateTime TerminatedDate { get; set; }
+        public Nullable<System.DateTime> TerminatedDate { get; set; }
     }
 }
