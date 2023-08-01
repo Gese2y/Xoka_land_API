@@ -24,6 +24,7 @@ namespace XOKA.Domain.Entities.Job
         public string Field_of_Business { get; set; }
         public Nullable<System.DateTime> Date_of_sending_to_the_employer_office { get; set; }
         public int number_of_person_requird { get; set; }
+        public string Created_By { get; set; }
 
 
     }

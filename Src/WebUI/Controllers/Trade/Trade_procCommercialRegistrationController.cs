@@ -14,6 +14,13 @@ using Application.Trade.Quiries.procCommercialRegistration.GetprocCommercialRegi
 using Application.Trade.Quiries.procCommercialRegistration.GetprocCommercialRegistrationLoadByPrimaryKeyTIN;
 using Application.Trade.Quiries.procCommercialRegistration.GetprocCommercialRegistrationLoadAll;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using XOKA.WebUI.Model;
+using System.Data.SqlClient;
+using System.Net.Http;
+using System.Net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace XOKA.WebUI.Controllers
 {
@@ -22,9 +29,12 @@ namespace XOKA.WebUI.Controllers
     public class Trade_procCommercialRegistrationController : BaseController
     {
         private readonly ILogger logger;
-        public Trade_procCommercialRegistrationController(ILogger<Trade_procCommercialRegistrationController> logger)
+        private IConfiguration Configuration;
+
+        public Trade_procCommercialRegistrationController(ILogger<Trade_procCommercialRegistrationController> logger, IConfiguration _configuration)
         {
             this.logger = logger;
+            Configuration = _configuration;
         }
 
         [HttpGet]
@@ -44,7 +54,86 @@ namespace XOKA.WebUI.Controllers
 
             return Ok(vm);
         }
+        [HttpPost("/api/Tax/proctrade/system")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesDefaultResponseType]
+        public async Task Create([FromBody] Trade commmand)
+        {
 
+            using (SqlConnection sql = new SqlConnection(this.Configuration.GetConnectionString("XOKADatabase")))
+            {
+
+                //MessageBox.Show(sql.State.ToString());
+                using (SqlCommand cmd = new SqlCommand("[Trade].[proc_Commercial_RegistrationInsertSystem]", sql))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Tin", commmand.Tin);
+                    await sql.OpenAsync();
+                    cmd.CommandTimeout = 300;
+                    await cmd.ExecuteNonQueryAsync();
+                    //HttpResponse response;
+                    sql.Close();
+                    return;
+                }
+            }
+        }
+   //     [HttpPost("Tin/Tin/Tin/Tin/Tin")]
+   //     public async Task Creatte([FromBody] Trade commmand)
+   //     {
+            
+
+
+   //             HttpClient clients = new HttpClient();
+
+   //             HttpResponseMessage respo = clients.GetAsync
+   //             (this.Configuration.GetValue<string>("Credential:tradURL") + commmand.Tin).Result;
+               
+   //                 dynamic json = JObject.Parse(respo.Content.ReadAsStringAsync().Result);
+   //                 using (SqlConnection sql = new SqlConnection(this.Configuration.GetConnectionString("XOKADatabase")))
+   //                 {
+
+   //                     //MessageBox.Show(sql.State.ToString());
+   //                     using (SqlCommand cmd = new SqlCommand("[Trade].[proc_ComercialRegistrationfromTrade]", sql))
+   //                     {
+   //                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                           
+   //cmd.Parameters.AddWithValue("@Tin", json.Tin.ToString());
+   //cmd.Parameters.AddWithValue("@LegalCondtion", json.LegalCondtion.ToString());
+   //cmd.Parameters.AddWithValue("@RegNo", json.RegNo.ToString());
+   //cmd.Parameters.AddWithValue("@RegDate", json.RegDate.ToString());
+   //cmd.Parameters.AddWithValue("@BusinessName", json.BusinessName.ToString());
+   //cmd.Parameters.AddWithValue("@BusinessNameAmh", json.BusinessNameAmh.ToString());
+   //cmd.Parameters.AddWithValue("@PaidUpCapital", json.PaidUpCapital.ToString());
+   //cmd.Parameters.AddWithValue("@Position", json.AssociateShortInfos[0].Position.ToString());
+   //cmd.Parameters.AddWithValue("@ManagerName", json.AssociateShortInfos[0].ManagerName.ToString());
+   //cmd.Parameters.AddWithValue("@ManagerNameEng", json.AssociateShortInfos[0].ManagerNameEng.ToString());
+   //cmd.Parameters.AddWithValue("@Photo", json.AssociateShortInfos[0].Photo.ToString());
+   //cmd.Parameters.AddWithValue("@MobilePhone", json.AssociateShortInfos[0].MobilePhone.ToString());
+   //cmd.Parameters.AddWithValue("@RegularPhone", json.AssociateShortInfos[0].RegularPhone.ToString());
+   //cmd.Parameters.AddWithValue("@OwnerTIN", json.Businesses[0].OwnerTIN.ToString());
+   //cmd.Parameters.AddWithValue("@DateRegistered", json.Businesses[0].DateRegistered.ToString());
+   //cmd.Parameters.AddWithValue("@TradeNameAmh", json.Businesses[0].TradeNameAmh.ToString());
+   //cmd.Parameters.AddWithValue("@TradesName", json.Businesses[0].TradesName.ToString());
+   //cmd.Parameters.AddWithValue("@LicenceNumber", json.Businesses[0].LicenceNumber.ToString());
+   //cmd.Parameters.AddWithValue("@RenewalDate", json.Businesses[0].RenewalDate.ToString());
+   //cmd.Parameters.AddWithValue("@RenewedFrom", json.Businesses[0].RenewedFrom.ToString());
+   //cmd.Parameters.AddWithValue("@RenewedTo", json.Businesses[0].RenewedTo.ToString());
+   //cmd.Parameters.AddWithValue("@BusinessLicensingGroupMain", json.Businesses[0].BusinessLicensingGroupMain.ToString());
+   //cmd.Parameters.AddWithValue("@Code", json.Businesses[0].SubGroups[0].Code.ToString());
+   //cmd.Parameters.AddWithValue("@Description", json.Businesses[0].SubGroups[0].Description.ToString());
+   //                 await sql.OpenAsync();
+   //                 cmd.CommandTimeout = 300;
+   //                         await cmd.ExecuteNonQueryAsync();
+   //                         //HttpResponse response;
+   //                         sql.Close();
+   //                     return;
+   //                     }
+   //                 }
+                 
+
+
+   //     }
         [HttpGet("TIN/{TIN}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

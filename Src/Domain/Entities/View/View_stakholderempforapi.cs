@@ -25,7 +25,8 @@ namespace XOKA.Domain.Entities.view
         public string? amharic_description { get; set; }
         public int? Age { get; set; }
         public string? Education_Level_Name { get; set; }
-        public string? Sex { get; set; }
+        public string? Sex { get; set; }  
+        public string? employee_Statusname { get; set; }
 
     }
 }

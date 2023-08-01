@@ -54,7 +54,13 @@ namespace Persistence
         #endregion
 
         // view
-        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; } 
+        public DbSet<ViewWorkinfo> ViewWorkinfo { get; set; }
+        public DbSet<View_Capital> View_Capital { get; set; }
+        public DbSet<View_Company_Detail_EN> View_Company_Detail_EN { get; set; }
+        public DbSet<View_Company_Detail_AM> View_Company_Detail_AM { get; set; }
+        public DbSet<View_ComercialRegistrationfromTrade> View_ComercialRegistrationfromTrade { get; set; }
+        public DbSet<view_assimenttransactionapi> view_assimenttransactionapi { get; set; }  
+        public DbSet<view_opportunityapi> view_opportunityapi { get; set; } 
         public DbSet<View_stakholderempforapi> View_stakholderempforapi { get; set; }
         public DbSet<View_jobopportunityapi> View_jobopportunityapi { get; set; }
         public DbSet<View_Sub_city_Job_Assignment_Transactionwithorgandopp> View_Sub_city_Job_Assignment_Transactionwithorgandopp { get; set; }
@@ -132,6 +138,60 @@ namespace Persistence
                eb.Property(v => v.Date_Expires).HasColumnName("Date_Expires");
           
            });
+            modelBuilder
+          .Entity<View_Capital>(eb =>
+          {
+              eb.HasNoKey();
+              eb.ToView("View_Capital");      
+        eb.Property(v => v.TIN).HasColumnName("TIN");
+              eb.Property(v => v.Capital_ID).HasColumnName("Capital_ID");
+              eb.Property(v => v.COM_REG_Number).HasColumnName("COM_REG_Number");
+              eb.Property(v => v.Intaial_Capital).HasColumnName("Intaial_Capital");
+              eb.Property(v => v.Current_Capital).HasColumnName("Current_Capital");
+           eb.Property(v => v.Year).HasColumnName("Year");
+           eb.Property(v => v.Updated_Date).HasColumnName("Updated_Date");
+           eb.Property(v => v.Is_Active).HasColumnName("Is_Active");
+
+          });
+            modelBuilder
+          .Entity<View_Company_Detail_EN>(eb =>
+          {
+              eb.HasNoKey();
+              eb.ToView("View_Company_Detail_EN");
+              eb.Property(v => v.TIN).HasColumnName("TIN");
+              eb.Property(v => v.ID).HasColumnName("ID");
+              eb.Property(v => v.COM_REG_Number).HasColumnName("COM_REG_Number");
+              eb.Property(v => v.Nationality).HasColumnName("Nationality");
+              eb.Property(v => v.GM_User).HasColumnName("GM_User");
+              eb.Property(v => v.Region).HasColumnName("Region");
+              eb.Property(v => v.Zone).HasColumnName("Zone");
+              eb.Property(v => v.City).HasColumnName("City");
+              eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+              eb.Property(v => v.Woreda).HasColumnName("Woreda");
+              eb.Property(v => v.House_Number).HasColumnName("House_Number");
+              eb.Property(v => v.Email).HasColumnName("Email");
+              eb.Property(v => v.Is_Active).HasColumnName("Is_Active");
+          });
+            modelBuilder
+          .Entity<View_Company_Detail_AM>(eb =>
+          {
+              eb.HasNoKey();
+              eb.ToView("View_Company_Detail_AM");
+        eb.Property(v => v.TIN).HasColumnName("TIN");
+              eb.Property(v => v.ID).HasColumnName("ID");
+              eb.Property(v => v.COM_REG_Number).HasColumnName("COM_REG_Number");
+              eb.Property(v => v.Nationality).HasColumnName("Nationality");
+              eb.Property(v => v.GM_User).HasColumnName("GM_User");
+        eb.Property(v => v.Region).HasColumnName("Region");
+        eb.Property(v => v.Zone).HasColumnName("Zone");
+        eb.Property(v => v.City).HasColumnName("City");
+        eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+ eb.Property(v => v.Woreda).HasColumnName("Woreda");
+ eb.Property(v => v.House_Number).HasColumnName("House_Number");
+ eb.Property(v => v.Email).HasColumnName("Email");
+ eb.Property(v => v.Is_Active).HasColumnName("Is_Active");
+
+    });
             modelBuilder
 
            .Entity<View_StackholderswithEnterprise_Registration>(eb =>
@@ -318,6 +378,23 @@ namespace Persistence
            eb.Property(v => v.Kebele_ID).HasColumnName("Kebele_ID");
            eb.Property(v => v.Woreda).HasColumnName("Woreda");
            eb.Property(v => v.Zone).HasColumnName("Zone");
+       });   modelBuilder
+       .Entity<view_opportunityapi>(eb =>
+       {
+           eb.HasNoKey();
+           eb.ToView("view_opportunityapi");
+           eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+           eb.Property(v => v.Stakeholder_TIN).HasColumnName("Stakeholder_TIN");
+           eb.Property(v => v.Created_By).HasColumnName("Created_By");
+           eb.Property(v => v.number_of_person_requird).HasColumnName("number_of_person_requird");
+       });   modelBuilder
+       .Entity<view_assimenttransactionapi>(eb =>
+       {
+           eb.HasNoKey();
+           eb.ToView("view_assimenttransactionapi");
+           eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
+           eb.Property(v => v.Sub_City).HasColumnName("Sub_City");
+           eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
        });
             modelBuilder
       .Entity<View_BatchwithEnrollment>(eb =>
@@ -442,6 +519,12 @@ namespace Persistence
        eb.Property(v => v.Job_Opportunity_ID).HasColumnName("Job_Opportunity_ID");
        eb.Property(v => v.Woreda).HasColumnName("Woreda");
        eb.Property(v => v.Number_Of_Person).HasColumnName("Number_Of_Person");
+   });   modelBuilder
+   .Entity<View_ComercialRegistrationfromTrade>(eb =>
+   {
+       eb.HasNoKey();
+        eb.ToView("View_ComercialRegistrationfromTrade");
+       eb.Property(v => v.Tin).HasColumnName("Tin");
    });
             modelBuilder
    .Entity<View_Sub_city_Job_Assignment_Transaction>(eb =>
@@ -582,7 +665,8 @@ namespace Persistence
    eb.Property(v => v.amharic_description).HasColumnName("amharic_description");
    eb.Property(v => v.Age).HasColumnName("Age");
    eb.Property(v => v.Education_Level_Name).HasColumnName("Education_Level_Name");
-   eb.Property(v => v.Sex).HasColumnName("Sex");
+   eb.Property(v => v.Sex).HasColumnName("Sex"); 
+    eb.Property(v => v.employee_Statusname).HasColumnName("employee_Statusname");
 });
         }
     }

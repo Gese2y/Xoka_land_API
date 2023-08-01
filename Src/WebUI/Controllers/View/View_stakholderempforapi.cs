@@ -25,6 +25,13 @@ namespace XOKA.WebUI.Controllers
         {
             var vm = _context.View_stakholderempforapi.Where(x => x.Stakeholder_TIN == Stakeholder_TIN).ToList();
             return Ok(vm);
+        } 
+        [HttpGet("vitalid/{Kebele_ID}")]
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
+        public async Task<IActionResult> Getbykebeleid(string Kebele_ID)
+        {
+            var vm = _context.View_stakholderempforapi.Where(x => x.Kebele_ID == Kebele_ID).ToList();
+            return Ok(vm);
         }
 
     }
